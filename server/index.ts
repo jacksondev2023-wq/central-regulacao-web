@@ -559,7 +559,15 @@ async function requireAuth(req: Request, res: Response, next: NextFunction) {
   return next();
 }
 
-app.get("/api/health", async (_req, res) => {
+app.get("/api/health", (_req, res) => {
+  res.json({
+    status: "ok",
+    service: "central-regulacao-api",
+    storage: pgPool ? "postgres-configured" : "file"
+  });
+});
+
+app.get("/api/storage-health", async (_req, res) => {
   try {
     if (pgPool) {
       await ensureDatabase();
