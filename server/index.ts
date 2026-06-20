@@ -14,7 +14,21 @@ const dataFile = process.env.DATA_FILE ? path.resolve(process.env.DATA_FILE) : s
 const databaseUrl = process.env.DATABASE_URL;
 const appStateId = process.env.APP_STATE_ID ?? "central-regulacao";
 const port = Number(process.env.PORT ?? 4000);
-const host = process.env.HOST ?? (process.env.NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1");
+const resolveHost = (rawHost?: string) => {
+  const fallbackHost = process.env.NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1";
+  const normalizedHost = rawHost?.trim();
+
+  if (!normalizedHost) {
+    return fallbackHost;
+  }
+
+  const unwrappedHost = normalizedHost.startsWith("[") && normalizedHost.endsWith("]")
+    ? normalizedHost.slice(1, -1)
+    : normalizedHost;
+
+  return unwrappedHost === "::" ? "0.0.0.0" : unwrappedHost;
+};
+const host = resolveHost(process.env.HOST);
 const clientDistDir = path.resolve(__dirname, "..", "dist");
 const app = express();
 const sessions = new Map<string, string>();
@@ -891,6 +905,6 @@ app.get("*", async (req, res) => {
 });
 
 app.listen(port, host, () => {
-  const visibleHost = host === "0.0.0.0" ? "localhost" : host;
+  const visibleHost = host === "0.0.0.0" ? "localhost" : host.includes(":") ? `[${host}]` : host;
   console.log(`Central de Regulação disponível em http://${visibleHost}:${port}`);
 });
