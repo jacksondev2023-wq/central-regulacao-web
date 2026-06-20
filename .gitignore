@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.log
+verification/
+server/data/*.backup-*.json
+.env
+.env.*
+!.env.example

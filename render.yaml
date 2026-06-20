@@ -1,0 +1,23 @@
+databases:
+  - name: central-regulacao-db
+    databaseName: central_regulacao
+    user: central_regulacao
+    plan: basic-256mb
+
+services:
+  - type: web
+    name: central-regulacao
+    runtime: node
+    plan: starter
+    buildCommand: npm ci && npm run build && npm prune --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: central-regulacao-db
+          property: connectionString

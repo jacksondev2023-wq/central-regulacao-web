@@ -1,0 +1,423 @@
+{
+  "users": [
+    {
+      "id": "lucelia",
+      "name": "Lucélia Ferreira",
+      "role": "atendente",
+      "title": "Atendente da regulação",
+      "shift": "Manhã",
+      "pin": "1234",
+      "active": true
+    },
+    {
+      "id": "danielle",
+      "name": "Danielle",
+      "role": "atendente",
+      "title": "Atendente da regulação",
+      "shift": "Tarde",
+      "pin": "1234",
+      "active": true
+    },
+    {
+      "id": "katia",
+      "name": "Katia",
+      "role": "atendente",
+      "title": "Atendente da regulação",
+      "shift": "Manhã",
+      "pin": "1234",
+      "active": true
+    },
+    {
+      "id": "maria",
+      "name": "Maria Eduarda",
+      "role": "atendente",
+      "title": "Atendente da regulação",
+      "shift": "Manhã",
+      "pin": "1234",
+      "active": true
+    },
+    {
+      "id": "grzi",
+      "name": "Grzi",
+      "role": "atendente",
+      "title": "Atendente da regulação",
+      "shift": "Folguista",
+      "pin": "1234",
+      "active": true
+    },
+    {
+      "id": "diego",
+      "name": "Diego Lucena",
+      "role": "regulador",
+      "title": "Enfermeiro regulador",
+      "shift": "Noite",
+      "pin": "1234",
+      "active": true
+    },
+    {
+      "id": "akaua",
+      "name": "Akauã",
+      "role": "regulador",
+      "title": "Enfermeiro regulador",
+      "shift": "Tarde",
+      "pin": "1234",
+      "active": true
+    }
+  ],
+  "lookups": {
+    "requestTypes": [
+      "Reposição de O2",
+      "Agendamento de remoções",
+      "Atendimento domiciliar",
+      "Reposição/Material",
+      "Queixa/Reclamação",
+      "Solicitação administrativa",
+      "Outros"
+    ],
+    "statuses": [
+      "Pendente",
+      "Em andamento",
+      "Aguardando retorno",
+      "Concluído",
+      "Cancelado",
+      "Encaminhado para o setor responsável"
+    ],
+    "attended": [
+      "Sim",
+      "Não"
+    ],
+    "origins": [
+      "Telefone",
+      "WhatsApp",
+      "E-mail",
+      "Sistema",
+      "Outro"
+    ],
+    "priorities": [
+      "Rotina",
+      "Atenção",
+      "Crítico"
+    ]
+  },
+  "attendances": [
+    {
+      "id": "ATD-20260619-KAT-001",
+      "date": "2026-06-19",
+      "time": "08:42",
+      "responsibleId": "katia",
+      "responsibleName": "Katia",
+      "patientName": "ANTONIO COTRIM SOARES",
+      "requestType": "Reposição/Material",
+      "status": "Concluído",
+      "attended": "Sim",
+      "priority": "Rotina",
+      "origin": "Sistema",
+      "unit": "Home care",
+      "finalDate": "2026-06-19",
+      "finalTime": "08:42",
+      "notes": "",
+      "createdBy": "katia",
+      "updatedAt": "2026-06-20T00:18:24.139Z"
+    },
+    {
+      "id": "ATD-20260619-KAT-002",
+      "date": "2026-06-19",
+      "time": "09:01",
+      "responsibleId": "katia",
+      "responsibleName": "Katia",
+      "patientName": "CLARICE XAVIER GOMES DA SILVA",
+      "requestType": "Reposição/Material",
+      "status": "Concluído",
+      "attended": "Sim",
+      "priority": "Rotina",
+      "origin": "Sistema",
+      "unit": "Home care",
+      "finalDate": "2026-06-19",
+      "finalTime": "09:01",
+      "notes": "",
+      "createdBy": "katia",
+      "updatedAt": "2026-06-20T00:18:24.140Z"
+    },
+    {
+      "id": "ATD-20260619-KAT-003",
+      "date": "2026-06-19",
+      "time": "08:08",
+      "responsibleId": "katia",
+      "responsibleName": "Katia",
+      "patientName": "EURINETE DE SOUZA MOREIRA",
+      "requestType": "Reposição/Material",
+      "status": "Concluído",
+      "attended": "Sim",
+      "priority": "Rotina",
+      "origin": "Sistema",
+      "unit": "Home care",
+      "finalDate": "2026-06-19",
+      "finalTime": "08:08",
+      "notes": "",
+      "createdBy": "katia",
+      "updatedAt": "2026-06-20T00:18:24.140Z"
+    },
+    {
+      "id": "ATD-20260619-KAT-004",
+      "date": "2026-06-19",
+      "time": "10:28",
+      "responsibleId": "katia",
+      "responsibleName": "Katia",
+      "patientName": "DYOGHO MATHEUS DOS SANTOS",
+      "requestType": "reposição de O2",
+      "status": "Concluído",
+      "attended": "Sim",
+      "priority": "Rotina",
+      "origin": "Sistema",
+      "unit": "Home care",
+      "finalDate": "2026-06-19",
+      "finalTime": "10:28",
+      "notes": "",
+      "createdBy": "katia",
+      "updatedAt": "2026-06-20T00:18:24.140Z"
+    },
+    {
+      "id": "ATD-20260619-KAT-005",
+      "date": "2026-06-19",
+      "time": "10:24",
+      "responsibleId": "katia",
+      "responsibleName": "Katia",
+      "patientName": "GISELLI CARINI DANTAS PEREIRA",
+      "requestType": "Reposição/Material",
+      "status": "Concluído",
+      "attended": "Sim",
+      "priority": "Rotina",
+      "origin": "Sistema",
+      "unit": "Home care",
+      "finalDate": "2026-06-19",
+      "finalTime": "10:24",
+      "notes": "",
+      "createdBy": "katia",
+      "updatedAt": "2026-06-20T00:18:24.140Z"
+    },
+    {
+      "id": "ATD-20260619-KAT-006",
+      "date": "2026-06-19",
+      "time": "10:51",
+      "responsibleId": "katia",
+      "responsibleName": "Katia",
+      "patientName": "MARIA CRISTINA DA CRUZ",
+      "requestType": "reposição de O2",
+      "status": "Concluído",
+      "attended": "Sim",
+      "priority": "Rotina",
+      "origin": "Sistema",
+      "unit": "Home care",
+      "finalDate": "2026-06-19",
+      "finalTime": "10:51",
+      "notes": "",
+      "createdBy": "katia",
+      "updatedAt": "2026-06-20T00:18:24.140Z"
+    },
+    {
+      "id": "ATD-20260619-KAT-007",
+      "date": "2026-06-19",
+      "time": "08:23",
+      "responsibleId": "katia",
+      "responsibleName": "Katia",
+      "patientName": "NOEME LOPES RIBEIRO",
+      "requestType": "Reposição/Material",
+      "status": "Concluído",
+      "attended": "Sim",
+      "priority": "Rotina",
+      "origin": "Sistema",
+      "unit": "Home care",
+      "finalDate": "2026-06-19",
+      "finalTime": "08:23",
+      "notes": "",
+      "createdBy": "katia",
+      "updatedAt": "2026-06-20T00:18:24.140Z"
+    },
+    {
+      "id": "ATD-20260619-KAT-008",
+      "date": "2026-06-19",
+      "time": "",
+      "responsibleId": "katia",
+      "responsibleName": "Katia",
+      "patientName": "GERALDO JOAQUIM DA SILVA",
+      "requestType": "Agendamento de romoções",
+      "status": "Pendente",
+      "attended": "Não",
+      "priority": "Atenção",
+      "origin": "Sistema",
+      "unit": "Home care",
+      "finalDate": "2026-06-19",
+      "notes": "",
+      "pendingReason": "Importado da planilha.",
+      "createdBy": "katia",
+      "updatedAt": "2026-06-20T00:18:24.140Z"
+    }
+  ],
+  "patients": [
+    {
+      "id": "pac-antonio-cotrim-soares",
+      "name": "ANTONIO COTRIM SOARES",
+      "unit": "Home care",
+      "active": true,
+      "createdAt": "2026-06-19T21:45:01.880Z",
+      "updatedAt": "2026-06-19T21:45:01.880Z"
+    },
+    {
+      "id": "pac-clarice-xavier-gomes-da-silva",
+      "name": "CLARICE XAVIER GOMES DA SILVA",
+      "unit": "Home care",
+      "active": true,
+      "createdAt": "2026-06-19T21:45:01.881Z",
+      "updatedAt": "2026-06-19T21:45:01.881Z"
+    },
+    {
+      "id": "pac-dyogho-matheus-dos-santos",
+      "name": "DYOGHO MATHEUS DOS SANTOS",
+      "unit": "Home care",
+      "active": true,
+      "createdAt": "2026-06-19T21:45:01.881Z",
+      "updatedAt": "2026-06-19T21:45:01.881Z"
+    },
+    {
+      "id": "pac-eurinete-de-souza-moreira",
+      "name": "EURINETE DE SOUZA MOREIRA",
+      "unit": "Home care",
+      "active": true,
+      "createdAt": "2026-06-19T21:45:01.881Z",
+      "updatedAt": "2026-06-19T21:45:01.881Z"
+    },
+    {
+      "id": "pac-geraldo-joaquim-da-silva",
+      "name": "GERALDO JOAQUIM DA SILVA",
+      "unit": "Home care",
+      "active": true,
+      "createdAt": "2026-06-19T21:45:01.881Z",
+      "updatedAt": "2026-06-19T21:45:01.881Z"
+    },
+    {
+      "id": "pac-giselli-carini-dantas-pereira",
+      "name": "GISELLI CARINI DANTAS PEREIRA",
+      "unit": "Home care",
+      "active": true,
+      "createdAt": "2026-06-19T21:45:01.881Z",
+      "updatedAt": "2026-06-19T21:45:01.881Z"
+    },
+    {
+      "id": "pac-maria-cristina-da-cruz",
+      "name": "MARIA CRISTINA DA CRUZ",
+      "unit": "Home care",
+      "active": true,
+      "createdAt": "2026-06-19T21:45:01.881Z",
+      "updatedAt": "2026-06-19T21:45:01.881Z"
+    },
+    {
+      "id": "pac-noeme-lopes-ribeiro",
+      "name": "NOEME LOPES RIBEIRO",
+      "unit": "Home care",
+      "active": true,
+      "createdAt": "2026-06-19T21:45:01.881Z",
+      "updatedAt": "2026-06-19T21:45:01.881Z"
+    }
+  ],
+  "handovers": [
+    {
+      "id": "PLT-20260619-LUC",
+      "userId": "lucelia",
+      "userName": "Lucélia Ferreira",
+      "role": "atendente",
+      "shift": "Manhã",
+      "startedAt": "2026-06-19T23:43:22.543Z",
+      "status": "Aberto",
+      "summary": "",
+      "criticalPoints": "",
+      "pendingActions": "",
+      "nextShiftMessage": "",
+      "situation": "",
+      "background": "",
+      "assessment": "",
+      "recommendation": "",
+      "checklist": {
+        "criticalReviewed": false,
+        "pendingAssigned": false,
+        "awaitingReturnReviewed": false,
+        "openCasesLinked": false
+      },
+      "linkedAttendanceIds": [],
+      "updatedAt": "2026-06-19T23:43:22.543Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "aud-ATD-20260619-KAT-001-created",
+      "attendanceId": "ATD-20260619-KAT-001",
+      "action": "Criado",
+      "userId": "katia",
+      "userName": "Katia",
+      "at": "2026-06-19T21:45:01.880Z",
+      "summary": "Registro importado ou criado sem trilha anterior."
+    },
+    {
+      "id": "aud-ATD-20260619-KAT-002-created",
+      "attendanceId": "ATD-20260619-KAT-002",
+      "action": "Criado",
+      "userId": "katia",
+      "userName": "Katia",
+      "at": "2026-06-19T21:45:01.881Z",
+      "summary": "Registro importado ou criado sem trilha anterior."
+    },
+    {
+      "id": "aud-ATD-20260619-KAT-003-created",
+      "attendanceId": "ATD-20260619-KAT-003",
+      "action": "Criado",
+      "userId": "katia",
+      "userName": "Katia",
+      "at": "2026-06-19T21:45:01.881Z",
+      "summary": "Registro importado ou criado sem trilha anterior."
+    },
+    {
+      "id": "aud-ATD-20260619-KAT-004-created",
+      "attendanceId": "ATD-20260619-KAT-004",
+      "action": "Criado",
+      "userId": "katia",
+      "userName": "Katia",
+      "at": "2026-06-19T21:45:01.881Z",
+      "summary": "Registro importado ou criado sem trilha anterior."
+    },
+    {
+      "id": "aud-ATD-20260619-KAT-005-created",
+      "attendanceId": "ATD-20260619-KAT-005",
+      "action": "Criado",
+      "userId": "katia",
+      "userName": "Katia",
+      "at": "2026-06-19T21:45:01.881Z",
+      "summary": "Registro importado ou criado sem trilha anterior."
+    },
+    {
+      "id": "aud-ATD-20260619-KAT-006-created",
+      "attendanceId": "ATD-20260619-KAT-006",
+      "action": "Criado",
+      "userId": "katia",
+      "userName": "Katia",
+      "at": "2026-06-19T21:45:01.881Z",
+      "summary": "Registro importado ou criado sem trilha anterior."
+    },
+    {
+      "id": "aud-ATD-20260619-KAT-007-created",
+      "attendanceId": "ATD-20260619-KAT-007",
+      "action": "Criado",
+      "userId": "katia",
+      "userName": "Katia",
+      "at": "2026-06-19T21:45:01.881Z",
+      "summary": "Registro importado ou criado sem trilha anterior."
+    },
+    {
+      "id": "aud-ATD-20260619-KAT-008-created",
+      "attendanceId": "ATD-20260619-KAT-008",
+      "action": "Criado",
+      "userId": "katia",
+      "userName": "Katia",
+      "at": "2026-06-19T21:45:01.881Z",
+      "summary": "Registro importado ou criado sem trilha anterior."
+    }
+  ]
+}
