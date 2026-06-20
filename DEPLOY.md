@@ -1,27 +1,31 @@
 # Deploy da Central de Regulação
 
-## Opção recomendada para produção inicial
+## Opção recomendada agora: Railway
 
-Use Render com Blueprint. O arquivo `render.yaml` cria:
+Como o dashboard do Render não abriu nesta rede, use Railway. O arquivo `railway.json` define:
 
-- um Web Service Node chamado `central-regulacao`
-- um banco PostgreSQL chamado `central-regulacao-db`
-- a variável `DATABASE_URL` apontando para o banco
 - build: `npm ci && npm run build`
 - start: `npm start`
 - health check: `/api/health`
+- restart automático em falha
 
-Quando `DATABASE_URL` existe, a aplicação usa PostgreSQL automaticamente. Se a tabela ainda não existir, o servidor cria `app_state` e importa a base inicial de `server/data/central-regulacao.json` no primeiro start.
+No Railway, adicione um banco PostgreSQL ao mesmo projeto e configure a variável `DATABASE_URL` no serviço web apontando para o PostgreSQL. Quando `DATABASE_URL` existe, a aplicação usa PostgreSQL automaticamente. Se a tabela ainda não existir, o servidor cria `app_state` e importa a base inicial de `server/data/central-regulacao.json` no primeiro start.
 
 ## Passos
 
-1. Crie um repositório privado no GitHub.
-2. Envie este projeto para o repositório privado.
-3. No Render, clique em New > Blueprint.
-4. Conecte o repositório privado.
-5. Confirme os recursos do `render.yaml`.
-6. Aguarde o banco e o Web Service ficarem ativos.
-7. Abra a URL pública gerada pelo Render.
+1. Acesse `https://railway.com`.
+2. Crie um New Project.
+3. Escolha Deploy from GitHub repo.
+4. Selecione `jacksondev2023-wq/central-regulacao-web`.
+5. Depois que o serviço web for criado, clique em New > Database > Add PostgreSQL.
+6. No serviço web, abra Variables e adicione `DATABASE_URL` referenciando o banco PostgreSQL.
+7. Garanta também `NODE_ENV=production`.
+8. Gere/abra o domínio público do serviço web.
+9. Teste `/api/health`; precisa retornar `storage: "postgres"`.
+
+## Alternativa: Render
+
+O `render.yaml` continua no repositório como alternativa. Ele cria Web Service + PostgreSQL via Blueprint. Use quando o dashboard do Render voltar a abrir na sua rede.
 
 ## Acessos iniciais
 

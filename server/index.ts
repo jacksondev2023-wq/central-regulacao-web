@@ -14,7 +14,7 @@ const dataFile = process.env.DATA_FILE ? path.resolve(process.env.DATA_FILE) : s
 const databaseUrl = process.env.DATABASE_URL;
 const appStateId = process.env.APP_STATE_ID ?? "central-regulacao";
 const port = Number(process.env.PORT ?? 4000);
-const host = process.env.HOST ?? "127.0.0.1";
+const host = process.env.HOST ?? (process.env.NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1");
 const clientDistDir = path.resolve(__dirname, "..", "dist");
 const app = express();
 const sessions = new Map<string, string>();
