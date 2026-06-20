@@ -1,0 +1,9 @@
+node_modules
+dist
+.git
+*.log
+verification
+server/data/*.backup-*.json
+.env
+.env.*
+!.env.example
