@@ -97,6 +97,7 @@ export type Handover = {
 };
 
 export type AppData = {
+  lastAttendanceNumber?: number;
   users: User[];
   lookups: {
     requestTypes: string[];

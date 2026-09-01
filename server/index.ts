@@ -322,6 +322,7 @@ function normalizeData(raw: Partial<AppData>): AppData {
   }));
 
   return {
+    lastAttendanceNumber: raw.lastAttendanceNumber,
     users,
     lookups,
     attendances,
@@ -339,17 +340,16 @@ function userInitials(name: string) {
     .filter(Boolean)
     .at(0) ?? "XXX";
 
-  return firstName
-    .slice(0, 3)
-    .toUpperCase()
-    .padEnd(3, "X");
+  return firstName.slice(0, 3).toUpperCase().padEnd(3, "X");
 }
 
-function createAttendanceId(data: AppData, date: string, responsibleName: string) {
-  const day = date.replaceAll("-", "");
-  const initials = userInitials(responsibleName);
-  const count = data.attendances.filter((item) => item.id.startsWith(`ATD-${day}-${initials}`)).length + 1;
-  return `ATD-${day}-${initials}-${String(count).padStart(3, "0")}`;
+function createAttendanceId(data: AppData) {
+  const lastExistingNumber = data.attendances.reduce((highest, attendance) => {
+    return /^\d+$/.test(attendance.id) ? Math.max(highest, Number(attendance.id)) : highest;
+  }, 20_991);
+  const nextNumber = Math.max(data.lastAttendanceNumber ?? 20_991, lastExistingNumber) + 1;
+  data.lastAttendanceNumber = nextNumber;
+  return String(nextNumber);
 }
 
 function canReadAttendance(_user: User, _attendance: Attendance) {
@@ -736,7 +736,7 @@ app.post("/api/attendances", requireAuth, async (req, res) => {
   }
 
   const attendance: Attendance = {
-    id: createAttendanceId(data, date, responsible?.name ?? user.name),
+    id: createAttendanceId(data),
     date,
     time,
     patientId: selectedPatient?.id,
