@@ -712,8 +712,13 @@ app.get("/api/attendances", requireAuth, (req, res) => {
 app.post("/api/attendances", requireAuth, async (req, res) => {
   const { user, data } = req as AuthedRequest;
   const body = req.body as Partial<Attendance>;
-  const responsibleId = user.role === "regulador" ? body.responsibleId ?? user.id : user.id;
-  const responsible = data.users.find((item) => item.id === responsibleId) ?? user;
+  const requestedResponsibleId = body.responsibleId?.trim() || "";
+  const responsibleId = user.role === "regulador"
+    ? requestedResponsibleId
+    : requestedResponsibleId === user.id
+      ? user.id
+      : "";
+  const responsible = responsibleId ? data.users.find((item) => item.id === responsibleId) : undefined;
   const selectedPatient = body.patientId ? data.patients.find((patient) => patient.id === body.patientId) : undefined;
   const status = normalizeStatus(body.status ?? "Pendente");
   const date = body.date ?? todayInSaoPaulo();
@@ -731,12 +736,12 @@ app.post("/api/attendances", requireAuth, async (req, res) => {
   }
 
   const attendance: Attendance = {
-    id: createAttendanceId(data, date, responsible.name),
+    id: createAttendanceId(data, date, responsible?.name ?? user.name),
     date,
     time,
     patientId: selectedPatient?.id,
-    responsibleId: responsible.id,
-    responsibleName: responsible.name,
+    responsibleId: responsible?.id ?? "",
+    responsibleName: responsible?.name ?? "Sem registro",
     patientName,
     requestType: body.requestType,
     status,
@@ -771,14 +776,19 @@ app.patch("/api/attendances/:id", requireAuth, async (req, res) => {
   if (!canEditAttendance(user, current)) return res.status(403).json({ message: "Sem permissão para atualizar este atendimento." });
 
   const body = req.body as Partial<Attendance>;
-  const allowedBody = user.role === "regulador" ? body : { ...body, responsibleId: current.responsibleId };
+  const responsibleChanged = Object.prototype.hasOwnProperty.call(body, "responsibleId");
+  const allowedBody = user.role === "regulador"
+    ? body
+    : responsibleChanged
+      ? { ...body, responsibleId: body.responsibleId === user.id ? user.id : "" }
+      : body;
   const selectedPatient = allowedBody.patientId ? data.patients.find((patient) => patient.id === allowedBody.patientId) : undefined;
   const responsible = allowedBody.responsibleId ? data.users.find((item) => item.id === allowedBody.responsibleId) : undefined;
   const next: Attendance = {
     ...current,
     ...allowedBody,
-    responsibleId: responsible?.id ?? current.responsibleId,
-    responsibleName: responsible?.name ?? current.responsibleName,
+    responsibleId: responsibleChanged ? responsible?.id ?? "" : current.responsibleId,
+    responsibleName: responsibleChanged ? responsible?.name ?? "Sem registro" : current.responsibleName,
     patientName: allowedBody.patientName?.trim() || selectedPatient?.name || current.patientName,
     status: allowedBody.status ? normalizeStatus(allowedBody.status) : current.status,
     updatedAt: isoNow()

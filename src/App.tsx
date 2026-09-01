@@ -144,7 +144,7 @@ function makeDraft(user: User, data: BootstrapResponse): AttendanceDraft {
   return {
     date: todayInput(),
     time: nowTimeInput(),
-    responsibleId: user.id,
+    responsibleId: "",
     requestType: data.lookups.requestTypes[0],
     status: "Pendente",
     attended: "Não",
@@ -647,7 +647,7 @@ function AttendancesView({
         attendance.patientName.toLowerCase().includes(search) ||
         attendance.id.toLowerCase().includes(search) ||
         attendance.requestType.toLowerCase().includes(search) ||
-        attendance.responsibleName.toLowerCase().includes(search);
+        (attendance.responsibleName || "Sem registro").toLowerCase().includes(search);
       return statusOk && searchOk;
     });
   }, [data.attendances, query, statusFilter]);
@@ -761,12 +761,12 @@ function AttendancesView({
               <input value={draft.patientName ?? ""} onChange={(event) => updateDraft("patientName", event.target.value)} required />
             </label>
             <label>
-              Responsável
+              Profissional responsável
               <select
-                value={draft.responsibleId ?? data.user.id}
+                value={draft.responsibleId ?? ""}
                 onChange={(event) => updateDraft("responsibleId", event.target.value)}
-                disabled={!canAssignResponsible}
               >
+                <option value="">Sem registro</option>
                 {responsibleOptions.map((user) => (
                   <option key={user.id} value={user.id}>
                     {user.name}
@@ -917,7 +917,7 @@ function AttendancesView({
                   <th>Tipo</th>
                   <th>Status</th>
                   <th>SLA</th>
-                  <th>Responsável</th>
+                  <th>Profissional</th>
                   <th>Prioridade</th>
                   <th>Ações</th>
                 </tr>
@@ -940,7 +940,7 @@ function AttendancesView({
                     <td>
                       <span className={`badge ${slaTone[attendance.slaStatus ?? "ok"]}`}>{slaLabel(attendance)}</span>
                     </td>
-                    <td>{attendance.responsibleName}</td>
+                    <td>{attendance.responsibleName || "Sem registro"}</td>
                     <td>
                       <span className={`badge ${priorityTone[attendance.priority]}`}>{attendance.priority}</span>
                     </td>
